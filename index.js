@@ -68,7 +68,7 @@ layout.forEach(row => {
     keyboardContainer.appendChild(rowContainer);
 });
 
-
+let capsLock=false;
 function virtualKeyPress(event) {
     const button = event.target; // получаем нажатую кнопку
     const buttonValue = button.textContent; // получаем значение кнопки (текст внутри)
@@ -91,11 +91,15 @@ function virtualKeyPress(event) {
         // перемещаем курсор в конечную позицию
         textField.selectionStart = textField.selectionEnd = start + 1;
     }
+    else if(button.textContent==="CapsLock"){
+        capsLock = !capsLock;
+    }
     else {
         textField.value += buttonValue;
     }
 
 }
+
 
 function realKeyPress(event){
         const key = event.key;
